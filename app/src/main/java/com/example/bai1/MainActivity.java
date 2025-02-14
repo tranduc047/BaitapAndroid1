@@ -1,6 +1,7 @@
 package com.example.bai1;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     private TextView canh,ketqua,ketqua1;
-    private Button btnTinh;
+    private Button btnTinh,btnWeb;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         btnTinh = findViewById(R.id.btnTinh);
         ketqua = findViewById(R.id.ketqua);
         ketqua1 = findViewById(R.id.ketqua1);
+        btnWeb = findViewById(R.id.btnWeb);
 
         btnTinh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +41,13 @@ public class MainActivity extends AppCompatActivity {
                 toan.setCanh(Integer.parseInt(canh.getText().toString()));
                 ketqua.setText("Chu vi: "+ toan.tinhChuVi());
                 ketqua1.setText("Diện tích: "+ toan.tinhDienTich());
+            }
+        });
+        btnWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), WebActivity.class);
+                startActivity(intent);
             }
         });
     }
