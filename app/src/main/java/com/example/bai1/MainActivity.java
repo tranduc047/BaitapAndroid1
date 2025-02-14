@@ -1,6 +1,10 @@
 package com.example.bai1;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +13,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
+    private TextView canh,ketqua,ketqua1;
+    private Button btnTinh;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +25,21 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        canh = findViewById(R.id.canh);
+        btnTinh = findViewById(R.id.btnTinh);
+        ketqua = findViewById(R.id.ketqua);
+        ketqua1 = findViewById(R.id.ketqua1);
+
+        btnTinh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TinhToan toan = new TinhToan();
+                toan.setCanh(Integer.parseInt(canh.getText().toString()));
+                ketqua.setText("Chu vi: "+ toan.tinhChuVi());
+                ketqua1.setText("Diện tích: "+ toan.tinhDienTich());
+            }
         });
     }
 }
